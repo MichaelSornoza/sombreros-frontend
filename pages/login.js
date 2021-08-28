@@ -96,7 +96,12 @@ const Login = () => {
               <Row lg={2} md={2} xs={1}>
                 <Col>
                   <Link href='/signup'>
-                    <Button variant='secondary' as='a' className='fix-button'>
+                    <Button
+                      variant='secondary'
+                      onClick={() => Router.push("/signup")}
+                      as='a'
+                      className='fix-button'
+                    >
                       Registrarse
                     </Button>
                   </Link>

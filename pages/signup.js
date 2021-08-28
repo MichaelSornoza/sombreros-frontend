@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
-
+import Router from "next/router";
 import { useState } from "react";
 
 import Axios from "axios";
@@ -17,14 +17,7 @@ import {
 } from "react-bootstrap";
 
 const Signup = () => {
-  const [form, setForm] = useState({
-    nombres: "",
-    apellidos: "",
-    phoneNumber: "",
-    email: "",
-    password: "",
-    passwordConfirmation: "",
-  });
+  const [form, setForm] = useState();
 
   const handleChange = (event) => {
     setForm({
@@ -182,6 +175,7 @@ const Signup = () => {
                       variant='secondary'
                       as='a'
                       className='fix-button-signup'
+                      onClick={() => Router.push("/login")}
                     >
                       Iniciar Sesion
                     </Button>
