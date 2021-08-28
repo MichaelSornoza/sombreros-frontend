@@ -20,6 +20,29 @@ const Home = ({ access_token, user, products }) => {
     });
   };
 
+  const test = () => {
+    Axios.post(
+      `${SC.api}/products`,
+      {
+        name: "test",
+        price: "test",
+        image: "test",
+        stock: 1,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${access_token}`,
+        },
+      }
+    )
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <Layout user={user}>
       <div className='main-background main-background-filter'>
@@ -37,7 +60,10 @@ const Home = ({ access_token, user, products }) => {
                   onClick={() => handleModal(product.name)}
                   key={index}
                 >
-                  <Card.Img variant='top' src='/product.jpg' />
+                  <Card.Img
+                    variant='top'
+                    src={`${SC.api}/products/image/${product.image}`}
+                  />
                   <Card.Body>
                     <Card.Title>{product.name}</Card.Title>
                     <p>
@@ -60,33 +86,43 @@ const Home = ({ access_token, user, products }) => {
           </Card.Header>
           <Card.Body>
             {user ? (
-              <div className='paypal-button'>
-                <form
-                  action='https://www.paypal.com/cgi-bin/webscr'
-                  method='post'
-                  target='_top'
+              <div className='buy-options'>
+                <div className='paypal-button'>
+                  <form
+                    action='https://www.paypal.com/cgi-bin/webscr'
+                    method='post'
+                    target='_top'
+                  >
+                    <input type='hidden' name='cmd' value='_s-xclick' />
+                    <input
+                      type='hidden'
+                      name='hosted_button_id'
+                      value='GBYWAZE5SNCLG'
+                    />
+                    <input
+                      type='image'
+                      src='https://www.paypalobjects.com/es_XC/i/btn/btn_buynowCC_LG.gif'
+                      border='0'
+                      name='submit'
+                      alt='PayPal - The safer, easier way to pay online!'
+                    />
+                    <img
+                      alt=''
+                      border='0'
+                      src='https://www.paypalobjects.com/es_XC/i/scr/pixel.gif'
+                      width='1'
+                      height='1'
+                    />
+                  </form>
+                </div>
+                <strong>Or</strong>
+                <a
+                  className='whatsapp-button'
+                  target='_blank'
+                  href='https://wa.me/+593994358532/?text=Quisiera%20mayor%20informacion%20sobre%20los%20sombreros'
                 >
-                  <input type='hidden' name='cmd' value='_s-xclick' />
-                  <input
-                    type='hidden'
-                    name='hosted_button_id'
-                    value='GBYWAZE5SNCLG'
-                  />
-                  <input
-                    type='image'
-                    src='https://www.paypalobjects.com/es_XC/i/btn/btn_buynowCC_LG.gif'
-                    border='0'
-                    name='submit'
-                    alt='PayPal - The safer, easier way to pay online!'
-                  />
-                  <img
-                    alt=''
-                    border='0'
-                    src='https://www.paypalobjects.com/es_XC/i/scr/pixel.gif'
-                    width='1'
-                    height='1'
-                  />
-                </form>
+                  <i className='bx bxl-whatsapp-square'></i>
+                </a>
               </div>
             ) : (
               <div className='not-login-message'>

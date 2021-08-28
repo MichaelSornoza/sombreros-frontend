@@ -433,11 +433,12 @@ ol {
   overflow: scroll;
   justify-items: center;
   gap: 2rem;
+  padding: 1rem;
 }
 
 .products-card-content {
-  height: 55rem;
-  width: 100rem;
+  height: 90vh;
+  width: 90vw;
   overflow: scroll;
   background-color: white;
   padding: 3rem;
@@ -478,4 +479,64 @@ ol {
   width: 100%;
   display: flex;
   justify-content: space-between;
+}
+
+.products-admin-card-content {
+  height: 90vh;
+  width: 90vw;
+  overflow: scroll;
+  background-color: white;
+  padding: 3rem;
+  z-index: 2;
+  /* opacity: 80%; */
+}
+
+.expanded-container {
+  height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.products-table {
+  max-height: 60vh;
+  overflow-y: scroll !important;
+}
+
+.expanded-image {
+  height: 30vh;
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  align-items: center;
+}
+
+.action-button {
+  font-size: large;
+  cursor: pointer;
+}
+
+.action-button:hover {
+  color: rgba(0, 0, 0, 0.3);
+}
+
+.buy-options {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.whatsapp-button {
+  font-size: 5rem;
+  color: #25d366;
+  cursor: pointer;
+  transition: all 0.4s ease;
+}
+
+.whatsapp-button:hover {
+  color: #1daf53;
 }

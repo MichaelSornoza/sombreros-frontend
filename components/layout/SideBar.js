@@ -40,6 +40,17 @@ const SideBar = ({ user }) => {
             </a>
           </Link>
         </li>
+        {user && user.role === "admin" && (
+          <li>
+            <Link href='/products/admin'>
+              <a>
+                <i className='bx bxs-shopping-bags'></i>
+                <span className='links_name'>Administrador Productos</span>
+                <span className='tooltip'>Administrador Productos</span>
+              </a>
+            </Link>
+          </li>
+        )}
         <li className='profile'>
           <div className='profile-details'>
             <i className='bx bx-user'></i>
